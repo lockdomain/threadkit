@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThreadKit · Write X threads with exact character counts</title>
+<meta name="description" content="Paste a long post, get a clean X thread. Exact X character counting (links are 23, emoji are 2), auto numbering, live preview and reach checks. Free, no login.">
+<meta property="og:title" content="ThreadKit">
+<meta property="og:description" content="Paste a long post, get a clean X thread with exact character counts and a live preview.">
+<meta property="og:image" content="https://lockdomain.github.io/threadkit/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230ea5e9'/><path d='M20 18v28M20 32h16M20 46h22' stroke='white' stroke-width='6' stroke-linecap='round'/><circle cx='20' cy='18' r='5' fill='white'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo"></span> ThreadKit</div>
+  <a class="gh" href="https://github.com/lockdomain/threadkit" target="_blank" rel="noopener">GitHub</a>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <h1>Write the thread. We'll do the counting.</h1>
+    <p>Paste a long post and get a clean X thread: exact character counts the way X counts them, automatic numbering, a live preview and checks that protect your reach.</p>
+  </section>
+
+  <section class="app">
+    <div class="left">
+      <div class="bar">
+        <label>Numbering
+          <select id="mode">
+            <option value="total">1/7</option>
+            <option value="slash">1/</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+        <button class="ghost sm" id="sample">Sample</button>
+        <button class="ghost sm" id="clear">Clear</button>
+      </div>
+      <textarea id="text" spellcheck="true" placeholder="Paste or write your post here.&#10;&#10;Long paragraphs are split at sentence ends.&#10;Put --- on its own line to force a break."></textarea>
+      <div class="meta"><span id="total"></span><span class="muted">Draft is saved in this browser only</span></div>
+      <div class="who">
+        <label>Name<input id="name" value="Your Name" maxlength="40"></label>
+        <label>Handle<input id="handle" value="@you" maxlength="20"></label>
+      </div>
+      <div class="lint" id="lint"></div>
+    </div>
+    <div class="right">
+      <div class="thread-head">
+        <b id="count">0 tweets</b>
+        <div class="acts">
+          <button class="ghost sm" id="copyAll">Copy all</button>
+          <a class="btn sm" id="post" target="_blank" rel="noopener">Post first tweet</a>
+        </div>
+      </div>
+      <div class="thread" id="thread"></div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <h2>How X counts characters</h2>
+    <div class="grid">
+      <div><b>Links are always 23</b><span>X wraps every link with t.co, so a 90 character URL and a 10 character one both cost 23.</span></div>
+      <div><b>Emoji are 2</b><span>Even long family or flag emoji made of several code points count as 2.</span></div>
+      <div><b>Some scripts are 2</b><span>Chinese, Japanese and Korean characters count as 2 each, so a full tweet holds 140.</span></div>
+      <div><b>Numbering costs space</b><span>"12/14" plus line breaks eats 7 characters. ThreadKit reserves it before splitting.</span></div>
+    </div>
+  </section>
+</main>
+<footer class="foot">Free and open source. Made by <a href="https://x.com/lockdomain" target="_blank" rel="noopener">@lockdomain</a></footer>
+<script src="count.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
